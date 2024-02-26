@@ -23,7 +23,7 @@
             <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox FontFamily="Gabriola" FontSize="42" Text="Введите для поиска" x:Name="SearchTextBox" BorderBrush="Black" Grid.Row="1" Margin="10" VerticalContentAlignment="Center" Grid.Column="1" Padding="20,10,10,10" AutomationProperties.HelpText="Введите для поиска" >
+        <TextBox FontFamily="Gabriola" FontSize="42" TextChanged="Tb_Search_OnTextChanged" GotFocus="OnGotFocus" LostFocus="Tb_Search_OnLostFocus" Text="Введите для поиска" x:Name="SearchTextBox" BorderBrush="Black" Grid.Row="1" Margin="10" VerticalContentAlignment="Center" Grid.Column="1" Padding="20,10,10,10" AutomationProperties.HelpText="Введите для поиска" >
 
         </TextBox>
 
@@ -32,7 +32,7 @@
         <ComboBox FontFamily="Gabriola" x:Name="FilterComboBox" FontSize="42" Grid.Column="3" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" Cursor="Arrow" AutomationProperties.HelpText="Сортировка"/>
         <ComboBox FontFamily="Gabriola" FontSize="42" Grid.Column="2" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" Cursor="Arrow" AutomationProperties.HelpText="Сортировка"/>
 
-        <ListView Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=4}">
+        <ListView Grid.Row="3" Name="LvProducts" Grid.ColumnSpan="3" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=4}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -43,13 +43,13 @@
                     <StackPanel Margin="0,15,0,15">
                         <Border BorderBrush="Black" BorderThickness="1">
                             <StackPanel Background="#CEFFF9" Orientation="Horizontal">
-                                <Image Source="{Binding image}" Width="300" Margin="20" Height="130"></Image>
+                                <Image Source="{Binding Image}" Width="300" Margin="20" Height="130"></Image>
 
                                 <StackPanel Margin="20">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{Binding ProductType}" FontWeight="Bold" FontFamily="Gabriola" FontSize="36"></TextBlock>
                                         <TextBlock Text=" | " FontSize="36"></TextBlock>
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontFamily="Gabriola" FontSize="36"></TextBlock>
+                                        <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontFamily="Gabriola" FontSize="36"></TextBlock>
                                     </StackPanel>
 
                                     <TextBlock Text="{Binding Articul}" FontFamily="Gabriola" FontSize="26"></TextBlock>
@@ -60,7 +60,7 @@
                                     </StackPanel>
 
                                 </StackPanel>
-                                <TextBlock Text="{Binding Cost}" Foreground="#00CC76" Margin="700,0,10,0" FontFamily="Gabriola" FontSize="42"></TextBlock>
+                                <TextBlock Text="{Binding Price}" Foreground="#00CC76" Margin="700,0,10,0" FontFamily="Gabriola" FontSize="42"></TextBlock>
                             </StackPanel>
                         </Border>
                     </StackPanel>

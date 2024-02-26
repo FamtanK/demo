@@ -13,5 +13,6 @@ namespace Demo
     /// </summary>
     public partial class App : Application
     {
+        public static ADO.DemoEntities connection = new ADO.DemoEntities();
     }
 }
