@@ -7,6 +7,78 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="825*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox FontFamily="Gabriola" FontSize="42" Text="Введите для поиска" x:Name="SearchTextBox" BorderBrush="Black" Grid.Row="1" Margin="10" VerticalContentAlignment="Center" Grid.Column="1" Padding="20,10,10,10" AutomationProperties.HelpText="Введите для поиска" >
+
+        </TextBox>
+
+        <ComboBox FontFamily="Gabriola" x:Name="SortComboBox" FontSize="42" Grid.Column="2" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" Cursor="Arrow" AutomationProperties.HelpText="Сортировка"/>
+        <ComboBox FontFamily="Gabriola" FontSize="42" Grid.Column="2" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" Cursor="Arrow" AutomationProperties.HelpText="Сортировка"/>
+        <ComboBox FontFamily="Gabriola" x:Name="FilterComboBox" FontSize="42" Grid.Column="3" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" Cursor="Arrow" AutomationProperties.HelpText="Сортировка"/>
+        <ComboBox FontFamily="Gabriola" FontSize="42" Grid.Column="2" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" Cursor="Arrow" AutomationProperties.HelpText="Сортировка"/>
+
+        <ListView Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=4}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,15,0,15">
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <StackPanel Background="#CEFFF9" Orientation="Horizontal">
+                                <Image Source="{Binding image}" Width="300" Margin="20" Height="130"></Image>
+
+                                <StackPanel Margin="20">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding ProductType}" FontWeight="Bold" FontFamily="Gabriola" FontSize="36"></TextBlock>
+                                        <TextBlock Text=" | " FontSize="36"></TextBlock>
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontFamily="Gabriola" FontSize="36"></TextBlock>
+                                    </StackPanel>
+
+                                    <TextBlock Text="{Binding Articul}" FontFamily="Gabriola" FontSize="26"></TextBlock>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Материалы: " FontSize="26" FontFamily="Gabriola"></TextBlock>
+                                        <TextBlock Text="{Binding Materials}" FontFamily="Gabriola" TextWrapping="Wrap" Width="450" FontSize="26"></TextBlock>
+                                    </StackPanel>
+
+                                </StackPanel>
+                                <TextBlock Text="{Binding Cost}" Foreground="#00CC76" Margin="700,0,10,0" FontFamily="Gabriola" FontSize="42"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel HorizontalAlignment="Right" Grid.Row="4" Grid.Column="3" Orientation="Horizontal" Margin="5,0,10,0">
+            <Button x:Name="ToPreviousButton" Content="&lt;" Margin="10,0,5,0" FontSize="30" BorderBrush="Transparent" Background="Transparent" FontFamily="Gabriola"></Button>
+
+            <Button x:Name="FirstNumButton" Content="1" FontSize="30" Margin="10,0,5,0" BorderBrush="Transparent" Background="Transparent" FontFamily="Gabriola"></Button>
+            <Button x:Name="SecNumButton" Content="2" FontSize="30" Margin="10,0,5,0" BorderBrush="Transparent" Background="Transparent" FontFamily="Gabriola"></Button>
+            <Button x:Name="ThirdNumButton" Content="3" FontSize="30" Margin="10,0,5,0" BorderBrush="Transparent" Background="Transparent" FontFamily="Gabriola"></Button>
+            <Button x:Name="FourNumButton" Content="4" FontSize="30" Margin="10,0,5,0" BorderBrush="Transparent" Background="Transparent" FontFamily="Gabriola"></Button>
+
+            <Button x:Name="ToNextButton" Content=">" FontSize="30" Margin="5,0,10,0" BorderBrush="Transparent" Background="Transparent" FontFamily="Gabriola"></Button>
+
+        </StackPanel>
+
     </Grid>
 </Window>
